@@ -1,7 +1,9 @@
 package br.com.casadocodigo.autor.dto;
 
 import br.com.casadocodigo.autor.Autor;
+import br.com.casadocodigo.autor.validacao.EmailDuplicadoValid;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -12,8 +14,10 @@ public class AutorForm {
     @NotBlank
     private String nome;
 
+    @EmailDuplicadoValid
     @NotBlank
     @Email
+    @Column(unique = true)
     private String email;
 
     @NotBlank

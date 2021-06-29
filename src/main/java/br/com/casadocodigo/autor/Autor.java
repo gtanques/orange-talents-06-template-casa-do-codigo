@@ -19,6 +19,7 @@ public class Autor {
 
     @NotBlank
     @Email
+    @Column(unique=true)
     private String email;
 
     @NotBlank
@@ -49,6 +50,14 @@ public class Autor {
     }
 
     public Autor() {
+    }
+
+    public Autor(Long id, String nome, String email, String descricao, Instant instante) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.descricao = descricao;
+        this.instante = instante;
     }
 
     public Autor(String nome, String email, String descricao, Instant instante) {
