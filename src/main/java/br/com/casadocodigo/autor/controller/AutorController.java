@@ -28,7 +28,7 @@ public class AutorController {
     @PostMapping
     @Transactional
     public ResponseEntity<AutorDto> inserir(@RequestBody @Valid AutorForm autorForm){
-        Autor autor = autorForm.converter();
+        Autor autor = autorForm.toModel();
         repository.save(autor);
         return ResponseEntity.ok().body(new AutorDto(autor));
     }
