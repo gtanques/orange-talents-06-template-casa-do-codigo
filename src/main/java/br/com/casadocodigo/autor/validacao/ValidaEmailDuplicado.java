@@ -1,7 +1,6 @@
 package br.com.casadocodigo.autor.validacao;
 
 import br.com.casadocodigo.autor.Autor;
-import br.com.casadocodigo.autor.dto.AutorForm;
 import br.com.casadocodigo.autor.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -27,7 +27,7 @@ public class Autor {
     private String descricao;
 
     @NotNull
-    private Instant instante;
+    private Instant instante = Instant.now();
 
     public Long getId() {
         return id;
@@ -49,21 +49,14 @@ public class Autor {
         return descricao;
     }
 
-    public Autor() {
+    @Deprecated
+    private Autor() {
     }
 
-    public Autor(Long id, String nome, String email, String descricao, Instant instante) {
-        this.id = id;
+    public Autor(String nome, String email, String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;
-        this.instante = instante;
     }
 
-    public Autor(String nome, String email, String descricao, Instant instante) {
-        this.nome = nome;
-        this.email = email;
-        this.descricao = descricao;
-        this.instante = instante;
-    }
 }
