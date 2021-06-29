@@ -3,7 +3,6 @@ package br.com.casadocodigo.autor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
 
@@ -14,24 +13,17 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @Column(nullable = false, unique=true)
     private String nome;
 
-    @NotBlank
-    @Email
-    @Column(unique=true)
+    @Column(nullable = false, unique=true)
     private String email;
 
-    @NotBlank
-    @Size(max = 400)
+    @Column(nullable = false)
     private String descricao;
 
-    @NotNull
+    @Column(nullable = false, updatable = false)
     private Instant instante = Instant.now();
-
-    public Long getId() {
-        return id;
-    }
 
     public String getNome() {
         return nome;
@@ -45,15 +37,11 @@ public class Autor {
         return instante;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
     @Deprecated
     private Autor() {
     }
 
-    public Autor(String nome, String email, String descricao) {
+    public Autor(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;
