@@ -22,8 +22,8 @@ public class ValidaEmailDuplicado implements ConstraintValidator<EmailDuplicadoV
     }
 
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        Optional<Autor> autorExiste = repository.findByEmail(s);
+    public boolean isValid(String request, ConstraintValidatorContext constraintValidatorContext) {
+        Optional<Autor> autorExiste = repository.findByEmail(request);
         if (autorExiste.isPresent()){
             return false;
         }
