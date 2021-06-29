@@ -4,6 +4,7 @@ import br.com.casadocodigo.autor.Autor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
 
@@ -19,7 +20,7 @@ public class AutorForm {
     @Size(max = 400)
     private String descricao;
 
-    @NotBlank
+    @NotNull
     private Instant instante;
 
     public AutorForm(String nome, String email, String descricao) {

@@ -3,6 +3,7 @@ package br.com.casadocodigo.autor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
 
@@ -24,7 +25,7 @@ public class Autor {
     @Size(max = 400)
     private String descricao;
 
-    @NotBlank
+    @NotNull
     private Instant instante;
 
     public Long getId() {
