@@ -1,14 +1,14 @@
 package br.com.casadocodigo.categorias.dto;
 
 import br.com.casadocodigo.categorias.Categoria;
-import br.com.casadocodigo.categorias.validacao.NomeDuplicadoValid;
+import br.com.casadocodigo.configuracao.validacao.anotacoes.UnicoValid;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.NotBlank;
 
 public class CategoriaForm {
 
-    @NomeDuplicadoValid
+    @UnicoValid(classe = Categoria.class, atributo = "nome")
     @NotBlank
     private String nome;
 
@@ -21,7 +21,7 @@ public class CategoriaForm {
     private CategoriaForm() {
     }
 
-    public Categoria toModel(){
+    public Categoria toModel() {
         return new Categoria(this.nome);
     }
 

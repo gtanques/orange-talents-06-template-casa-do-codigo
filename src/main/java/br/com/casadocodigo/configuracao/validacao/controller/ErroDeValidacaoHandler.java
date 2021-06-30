@@ -1,4 +1,4 @@
-package br.com.casadocodigo.configuracao.validacao;
+package br.com.casadocodigo.configuracao.validacao.controller;
 
 import br.com.casadocodigo.configuracao.validacao.dto.ErroDeFormularioDto;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package br.com.casadocodigo.autores.dto;
 
 import br.com.casadocodigo.autores.Autor;
-import br.com.casadocodigo.autores.validacao.EmailDuplicadoValid;
+import br.com.casadocodigo.configuracao.validacao.anotacoes.UnicoValid;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +11,7 @@ public class AutorForm {
     @NotBlank
     private String nome;
 
-    @EmailDuplicadoValid
+    @UnicoValid(classe = Autor.class, atributo = "email")
     @NotBlank
     @Email
     private String email;
@@ -26,7 +26,7 @@ public class AutorForm {
         this.descricao = descricao;
     }
 
-    public Autor toModel(){
+    public Autor toModel() {
         return new Autor(this.nome, this.email, this.descricao);
     }
 }
