@@ -1,6 +1,6 @@
-package br.com.casadocodigo.autor.dto;
+package br.com.casadocodigo.autores.dto;
 
-import br.com.casadocodigo.autor.Autor;
+import br.com.casadocodigo.autores.Autor;
 
 import java.time.Instant;
 

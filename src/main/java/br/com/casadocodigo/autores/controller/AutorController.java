@@ -1,9 +1,9 @@
-package br.com.casadocodigo.autor.controller;
+package br.com.casadocodigo.autores.controller;
 
-import br.com.casadocodigo.autor.Autor;
-import br.com.casadocodigo.autor.dto.AutorDto;
-import br.com.casadocodigo.autor.dto.AutorForm;
-import br.com.casadocodigo.autor.repository.AutorRepository;
+import br.com.casadocodigo.autores.Autor;
+import br.com.casadocodigo.autores.dto.AutorDto;
+import br.com.casadocodigo.autores.dto.AutorForm;
+import br.com.casadocodigo.autores.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

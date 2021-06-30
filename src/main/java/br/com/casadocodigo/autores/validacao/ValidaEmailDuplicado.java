@@ -1,7 +1,7 @@
-package br.com.casadocodigo.autor.validacao;
+package br.com.casadocodigo.autores.validacao;
 
-import br.com.casadocodigo.autor.Autor;
-import br.com.casadocodigo.autor.repository.AutorRepository;
+import br.com.casadocodigo.autores.Autor;
+import br.com.casadocodigo.autores.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

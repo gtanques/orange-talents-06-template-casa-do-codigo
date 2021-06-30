@@ -1,7 +1,7 @@
-package br.com.casadocodigo.autor.dto;
+package br.com.casadocodigo.autores.dto;
 
-import br.com.casadocodigo.autor.Autor;
-import br.com.casadocodigo.autor.validacao.EmailDuplicadoValid;
+import br.com.casadocodigo.autores.Autor;
+import br.com.casadocodigo.autores.validacao.EmailDuplicadoValid;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

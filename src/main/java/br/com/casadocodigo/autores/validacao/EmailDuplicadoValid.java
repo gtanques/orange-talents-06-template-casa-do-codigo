@@ -1,4 +1,4 @@
-package br.com.casadocodigo.autor.validacao;
+package br.com.casadocodigo.autores.validacao;
 
 
 import javax.validation.Constraint;

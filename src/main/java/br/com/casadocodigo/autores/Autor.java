@@ -1,4 +1,4 @@
-package br.com.casadocodigo.autor;
+package br.com.casadocodigo.autores;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -9,6 +9,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "tb_autor")
 public class Autor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

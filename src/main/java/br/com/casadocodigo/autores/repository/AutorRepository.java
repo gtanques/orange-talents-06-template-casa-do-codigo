@@ -1,6 +1,6 @@
-package br.com.casadocodigo.autor.repository;
+package br.com.casadocodigo.autores.repository;
 
-import br.com.casadocodigo.autor.Autor;
+import br.com.casadocodigo.autores.Autor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
