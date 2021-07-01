@@ -35,6 +35,7 @@ public class LivroForm {
     private Integer numeroPaginas;
 
     @NotBlank
+    @UnicoValid(classe = Livro.class, atributo = "isbn")
     private String isbn;
 
     @JsonFormat(pattern = "dd/MM/yyy", shape = JsonFormat.Shape.STRING)
