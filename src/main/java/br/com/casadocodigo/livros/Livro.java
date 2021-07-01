@@ -32,7 +32,7 @@ public class Livro {
     @Column(nullable = false)
     private Integer numeroPaginas;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String isbn;
 
     @JsonFormat(pattern = "dd/MM/yyy", shape = Shape.STRING)
