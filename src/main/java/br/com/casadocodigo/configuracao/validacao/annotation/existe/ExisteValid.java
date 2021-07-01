@@ -1,4 +1,4 @@
-package br.com.casadocodigo.configuracao.validacao.annotation;
+package br.com.casadocodigo.configuracao.validacao.annotation.existe;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -8,11 +8,13 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+
 @Target({FIELD})
 @Retention(RUNTIME)
-@Constraint(validatedBy = UnicoValidator.class)
-public @interface UnicoValid {
-    String message() default "já cadastrado(a).";
+@Constraint(validatedBy = ExisteValidator.class)
+public @interface ExisteValid {
+
+    String message() default "Não encontrado(a).";
 
     Class<?>[] groups() default {};
 
@@ -23,4 +25,7 @@ public @interface UnicoValid {
     String atributo();
 
     Class<?> classe();
+
 }
+
+

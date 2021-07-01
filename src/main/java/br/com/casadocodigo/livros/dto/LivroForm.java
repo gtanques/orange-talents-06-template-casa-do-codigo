@@ -2,11 +2,11 @@ package br.com.casadocodigo.livros.dto;
 
 import br.com.casadocodigo.autores.Autor;
 import br.com.casadocodigo.categorias.Categoria;
-import br.com.casadocodigo.configuracao.validacao.annotation.UnicoValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.existe.ExisteValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.unico.UnicoValid;
 import br.com.casadocodigo.livros.Livro;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
 import javax.validation.constraints.*;
@@ -42,9 +42,11 @@ public class LivroForm {
     private LocalDate dataPublicacao;
 
     @NotNull
+    @ExisteValid(classe = Autor.class, atributo = "id")
     private Long autorId;
 
     @NotNull
+    @ExisteValid(classe = Categoria.class, atributo = "id")
     private Long categoriaId;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
@@ -68,10 +70,6 @@ public class LivroForm {
     public Livro toModel(EntityManager entityManager) {
         Autor autor = entityManager.find(Autor.class, this.autorId);
         Categoria categoria = entityManager.find(Categoria.class, this.categoriaId);
-
-        Assert.state(autor != null, "Autor não cadastrado!");
-        Assert.state(categoria != null, "Autor não cadastrado!");
-
         return new Livro(
                 this.titulo,
                 this.resumo,
