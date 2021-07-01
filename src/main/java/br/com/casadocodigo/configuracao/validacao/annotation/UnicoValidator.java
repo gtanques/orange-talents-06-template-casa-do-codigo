@@ -1,4 +1,4 @@
-package br.com.casadocodigo.configuracao.validacao.anotacoes;
+package br.com.casadocodigo.configuracao.validacao.annotation;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

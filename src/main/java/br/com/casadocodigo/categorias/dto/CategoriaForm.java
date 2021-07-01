@@ -1,7 +1,7 @@
 package br.com.casadocodigo.categorias.dto;
 
 import br.com.casadocodigo.categorias.Categoria;
-import br.com.casadocodigo.configuracao.validacao.anotacoes.UnicoValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.UnicoValid;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.NotBlank;

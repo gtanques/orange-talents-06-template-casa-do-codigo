@@ -2,13 +2,13 @@ package br.com.casadocodigo.livros.dto;
 
 import br.com.casadocodigo.autores.Autor;
 import br.com.casadocodigo.categorias.Categoria;
-import br.com.casadocodigo.configuracao.validacao.anotacoes.UnicoValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.UnicoValid;
 import br.com.casadocodigo.livros.Livro;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.util.Assert;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -47,7 +47,7 @@ public class LivroForm {
     @NotNull
     private Long categoriaId;
 
-//    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public LivroForm(
             String titulo, String resumo,
             String sumario, BigDecimal preco,
