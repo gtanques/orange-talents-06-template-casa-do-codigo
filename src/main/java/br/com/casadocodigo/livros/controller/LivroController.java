@@ -30,7 +30,7 @@ public class LivroController {
     @Transactional
     public ResponseEntity<?> inserir(@Valid @RequestBody LivroForm form){
         Livro livro = form.toModel(entityManager);
-        System.out.println(livro.toString());
+        repository.save(livro);
         return ResponseEntity.ok().build();
     }
 }
