@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class LivroForm {
+public class LivroRequest {
 
     @UnicoValid(classe = Livro.class, atributo = "titulo")
     @NotBlank
@@ -38,7 +38,7 @@ public class LivroForm {
     @UnicoValid(classe = Livro.class, atributo = "isbn")
     private String isbn;
 
-    @JsonFormat(pattern = "dd/MM/yyy", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     @Future
     private LocalDate dataPublicacao;
 
@@ -51,7 +51,7 @@ public class LivroForm {
     private Long categoriaId;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public LivroForm(
+    public LivroRequest(
             String titulo, String resumo,
             String sumario, BigDecimal preco,
             Integer numeroPaginas, String isbn,

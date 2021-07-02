@@ -6,19 +6,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.NotBlank;
 
-public class CategoriaForm {
+public class CategoriaRequest {
 
     @UnicoValid(classe = Categoria.class, atributo = "nome")
     @NotBlank
     private String nome;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public CategoriaForm(String nome) {
+    public CategoriaRequest(String nome) {
         this.nome = nome;
     }
 
     @Deprecated
-    private CategoriaForm() {
+    private CategoriaRequest() {
     }
 
     public Categoria toModel() {

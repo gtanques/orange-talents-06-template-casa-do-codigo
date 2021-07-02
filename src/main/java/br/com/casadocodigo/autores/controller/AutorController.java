@@ -1,8 +1,8 @@
 package br.com.casadocodigo.autores.controller;
 
 import br.com.casadocodigo.autores.Autor;
-import br.com.casadocodigo.autores.dto.AutorDto;
-import br.com.casadocodigo.autores.dto.AutorForm;
+import br.com.casadocodigo.autores.dto.AutorResponse;
+import br.com.casadocodigo.autores.dto.AutorRequest;
 import br.com.casadocodigo.autores.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +27,9 @@ public class AutorController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<AutorDto> inserir(@RequestBody @Valid AutorForm autorForm){
-        Autor autor = autorForm.toModel();
+    public ResponseEntity<AutorResponse> inserir(@RequestBody @Valid AutorRequest request){
+        Autor autor = request.toModel();
         repository.save(autor);
-        return ResponseEntity.ok().body(new AutorDto(autor));
+        return ResponseEntity.ok().body(new AutorResponse(autor));
     }
 }

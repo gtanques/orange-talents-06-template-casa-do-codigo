@@ -4,7 +4,7 @@ import br.com.casadocodigo.autores.Autor;
 
 import java.time.Instant;
 
-public class AutorDto {
+public class AutorResponse {
 
     private String nome;
     private String email;
@@ -20,12 +20,14 @@ public class AutorDto {
         return instante;
     }
 
-    public AutorDto() {
+    @Deprecated
+    private AutorResponse() {
     }
 
-    public AutorDto(Autor autor) {
+    public AutorResponse(Autor autor) {
         this.nome = autor.getNome();
         this.email = autor.getEmail();
         this.instante = autor.getInstante();
     }
+
 }

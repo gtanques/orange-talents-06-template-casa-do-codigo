@@ -2,7 +2,7 @@ package br.com.casadocodigo.livros.controller;
 
 import br.com.casadocodigo.livros.Livro;
 import br.com.casadocodigo.livros.dto.ListarLivrosResponse;
-import br.com.casadocodigo.livros.dto.LivroForm;
+import br.com.casadocodigo.livros.dto.LivroRequest;
 import br.com.casadocodigo.livros.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,8 +29,8 @@ public class LivroController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> inserir(@Valid @RequestBody LivroForm form){
-        Livro livro = form.toModel(entityManager);
+    public ResponseEntity<?> inserir(@Valid @RequestBody LivroRequest request){
+        Livro livro = request.toModel(entityManager);
         repository.save(livro);
         return ResponseEntity.ok().build();
     }

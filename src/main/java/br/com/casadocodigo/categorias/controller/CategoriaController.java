@@ -1,7 +1,7 @@
 package br.com.casadocodigo.categorias.controller;
 
 import br.com.casadocodigo.categorias.Categoria;
-import br.com.casadocodigo.categorias.dto.CategoriaForm;
+import br.com.casadocodigo.categorias.dto.CategoriaRequest;
 import br.com.casadocodigo.categorias.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +24,8 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> inserir(@RequestBody @Valid CategoriaForm form){
-        Categoria categoria = form.toModel();
+    public ResponseEntity<?> inserir(@RequestBody @Valid CategoriaRequest request){
+        Categoria categoria = request.toModel();
         repository.save(categoria);
         return  ResponseEntity.ok().build();
     }
