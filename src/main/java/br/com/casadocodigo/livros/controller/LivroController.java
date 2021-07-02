@@ -1,6 +1,7 @@
 package br.com.casadocodigo.livros.controller;
 
 import br.com.casadocodigo.livros.Livro;
+import br.com.casadocodigo.livros.dto.DetalheLivroResponse;
 import br.com.casadocodigo.livros.dto.ListarLivrosResponse;
 import br.com.casadocodigo.livros.dto.LivroRequest;
 import br.com.casadocodigo.livros.repository.LivroRepository;
@@ -15,6 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/livros")
@@ -36,9 +38,18 @@ public class LivroController {
     }
 
     @GetMapping
-    public ResponseEntity<?> buscarLivros(@PageableDefault(sort="id") Pageable paginacao){
+    public ResponseEntity<?> buscarLivros(@RequestParam(required = false) @PageableDefault(sort="id") Pageable paginacao){
         Page<Livro> livros = repository.findAll(paginacao);
         return ResponseEntity.ok().body(ListarLivrosResponse.toDto(livros));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> detalhesLivro(@PathVariable Long id){
+        Optional<Livro> optional =  repository.findById(id);
+        if (optional.isPresent()){
+            return ResponseEntity.ok(new DetalheLivroResponse(optional.get()));
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
