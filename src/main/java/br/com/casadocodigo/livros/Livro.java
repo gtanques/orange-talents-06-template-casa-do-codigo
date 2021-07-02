@@ -48,6 +48,10 @@ public class Livro {
     @ManyToOne
     private Categoria categoriaId;
 
+    @Deprecated
+    private Livro() {
+    }
+
     public Livro(@NotBlank String titulo,
                  @NotBlank @Size(max = 500) String resumo,
                  @NotBlank String sumario,
@@ -68,20 +72,12 @@ public class Livro {
         this.categoriaId = categoriaId;
     }
 
-
-    @Override
-    public String toString() {
-        return "Livro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", resumo='" + resumo + '\'' +
-                ", sumario='" + sumario + '\'' +
-                ", preco=" + preco +
-                ", numeroPaginas=" + numeroPaginas +
-                ", isbn='" + isbn + '\'' +
-                ", dataPublicacao=" + dataPublicacao +
-                ", autorId=" + autorId +
-                ", categoriaId=" + categoriaId +
-                '}';
+    public Long getId() {
+        return id;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
 }
