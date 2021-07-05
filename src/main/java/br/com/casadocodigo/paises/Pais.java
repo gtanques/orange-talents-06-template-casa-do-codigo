@@ -6,11 +6,13 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name="tb_pais")
 public class Pais {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     @Column(nullable = false)
+    @NotBlank
     private String nome;
 
     @Deprecated
@@ -21,7 +23,4 @@ public class Pais {
         this.nome = nome;
     }
 
-    public String getNome() {
-        return nome;
-    }
 }
