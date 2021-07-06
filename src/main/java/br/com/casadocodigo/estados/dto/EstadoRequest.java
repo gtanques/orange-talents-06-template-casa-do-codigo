@@ -11,11 +11,7 @@ import javax.persistence.EntityManager;
 import javax.validation.constraints.NotBlank;
 
 
-@EstadoValid(classe = Estado.class,
-                campo = "nome",
-                relacionamento = Pais.class,
-                relacionamentoNome = "pais",
-                relacionamentoCampo = "id")
+@EstadoValid
 public class EstadoRequest implements EstadoRelacionamento<String, Long> {
 
     @NotBlank
@@ -49,4 +45,5 @@ public class EstadoRequest implements EstadoRelacionamento<String, Long> {
     public Long getRelacionamento() {
         return paisId;
     }
+
 }
