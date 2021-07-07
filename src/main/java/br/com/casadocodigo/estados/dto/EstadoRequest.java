@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 
 @UnicoNoPaisValid
-public class RequestGenerico implements RelacionamentoGenerico<String, Long> {
+public class EstadoRequest implements RelacionamentoGenerico<String, Long> {
 
     @NotBlank
     @NotNull
@@ -24,11 +24,11 @@ public class RequestGenerico implements RelacionamentoGenerico<String, Long> {
     private Long paisId;
 
     @Deprecated
-    private RequestGenerico() {
+    private EstadoRequest() {
     }
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public RequestGenerico(String nome, Long paisId) {
+    public EstadoRequest(String nome, Long paisId) {
         this.nome = nome;
         this.paisId = paisId;
     }
