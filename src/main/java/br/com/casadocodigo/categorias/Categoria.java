@@ -2,6 +2,7 @@ package br.com.casadocodigo.categorias;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -18,7 +19,7 @@ public class Categoria {
     private Categoria() {
     }
 
-    public Categoria(@NotBlank String nome) {
+    public Categoria(@NotBlank @NotNull String nome) {
         this.nome = nome;
     }
 

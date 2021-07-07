@@ -5,11 +5,13 @@ import br.com.casadocodigo.configuracao.validacao.annotation.unico.UnicoValid;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class CategoriaRequest {
 
     @UnicoValid(classe = Categoria.class, atributo = "nome")
     @NotBlank
+    @NotNull
     private String nome;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)

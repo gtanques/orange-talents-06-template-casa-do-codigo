@@ -26,7 +26,7 @@ public class Estado {
     private Estado() {
     }
 
-    public Estado(@NotBlank String nome, @NotNull Pais pais) {
+    public Estado(@NotBlank @NotNull String nome, @NotNull @NotNull Pais pais) {
         this.nome = nome;
         this.pais = pais;
     }

@@ -9,15 +9,18 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.persistence.EntityManager;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @EstadoValid
 public class EstadoRequest implements EstadoRelacionamento<String, Long> {
 
     @NotBlank
+    @NotNull
     private String nome;
 
     @ExisteValid(classe = Pais.class, atributo = "id")
+    @NotNull
     private Long paisId;
 
     @Deprecated

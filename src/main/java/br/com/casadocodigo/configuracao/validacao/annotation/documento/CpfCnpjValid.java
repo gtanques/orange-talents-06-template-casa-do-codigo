@@ -1,4 +1,4 @@
-package br.com.casadocodigo.configuracao.validacao.annotation.CpfCnpj;
+package br.com.casadocodigo.configuracao.validacao.annotation.documento;
 
 
 import org.hibernate.validator.constraints.CompositionType;

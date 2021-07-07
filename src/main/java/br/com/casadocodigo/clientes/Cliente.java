@@ -4,6 +4,9 @@ import br.com.casadocodigo.estados.Estado;
 import br.com.casadocodigo.paises.Pais;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_cliente")
@@ -47,17 +50,17 @@ public class Cliente {
     private Estado estado;
 
 
-    public Cliente(String nome,
-                   String sobrenome,
-                   String email,
-                   String documento,
-                   String telefone,
-                   String cep,
-                   String endereco,
-                   String complemento,
-                   String cidade,
-                   Pais pais,
-                   Estado estado) {
+    public Cliente(@NotBlank @NotNull String nome,
+                   @NotBlank @NotNull String sobrenome,
+                   @NotBlank @Email String email,
+                   @NotBlank @NotNull String documento,
+                   @NotBlank @NotNull String telefone,
+                   @NotBlank @NotNull String cep,
+                   @NotBlank @NotNull String endereco,
+                   @NotBlank @NotNull String complemento,
+                   @NotBlank @NotNull String cidade,
+                   @NotNull Pais pais,
+                   @NotNull Estado estado) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
@@ -74,4 +77,5 @@ public class Cliente {
     public Long getId() {
         return id;
     }
+
 }

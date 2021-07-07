@@ -1,7 +1,7 @@
 package br.com.casadocodigo.clientes.dto;
 
 import br.com.casadocodigo.clientes.Cliente;
-import br.com.casadocodigo.configuracao.validacao.annotation.CpfCnpj.CpfCnpjValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.documento.CpfCnpjValid;
 import br.com.casadocodigo.configuracao.validacao.annotation.existe.ExisteValid;
 import br.com.casadocodigo.configuracao.validacao.annotation.unico.UnicoValid;
 import br.com.casadocodigo.estados.Estado;
