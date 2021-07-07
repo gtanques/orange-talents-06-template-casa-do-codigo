@@ -1,7 +1,7 @@
 package br.com.casadocodigo.estados.dto;
 
-import br.com.casadocodigo.configuracao.validacao.annotation.estado.EstadoRelacionamento;
-import br.com.casadocodigo.configuracao.validacao.annotation.estado.EstadoValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.estado.RelacionamentoGenerico;
+import br.com.casadocodigo.configuracao.validacao.annotation.estado.uniconopais.UnicoNoPaisValid;
 import br.com.casadocodigo.configuracao.validacao.annotation.existe.ExisteValid;
 import br.com.casadocodigo.estados.Estado;
 import br.com.casadocodigo.paises.Pais;
@@ -12,8 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
-@EstadoValid
-public class EstadoRequest implements EstadoRelacionamento<String, Long> {
+@UnicoNoPaisValid
+public class RequestGenerico implements RelacionamentoGenerico<String, Long> {
 
     @NotBlank
     @NotNull
@@ -24,11 +24,11 @@ public class EstadoRequest implements EstadoRelacionamento<String, Long> {
     private Long paisId;
 
     @Deprecated
-    private EstadoRequest() {
+    private RequestGenerico() {
     }
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public EstadoRequest(String nome, Long paisId) {
+    public RequestGenerico(String nome, Long paisId) {
         this.nome = nome;
         this.paisId = paisId;
     }

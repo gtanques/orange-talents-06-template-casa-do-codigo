@@ -1,4 +1,5 @@
-package br.com.casadocodigo.configuracao.validacao.annotation.estado;
+package br.com.casadocodigo.configuracao.validacao.annotation.estado.existenopais;
+
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -10,12 +11,12 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
-@Constraint(validatedBy = {EstadoValidator.class})
+@Constraint(validatedBy = {ExisteNoPaisValidator.class})
 @Target({ElementType.TYPE})
 @Retention(RUNTIME)
-public @interface EstadoValid {
+public @interface ExisteNoPaisValid {
 
-    String message() default "Já existe um estado com esse nome no país";
+    String message() default "O país possui estados.";
 
     Class<?>[] groups() default {};
 

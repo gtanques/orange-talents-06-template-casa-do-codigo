@@ -60,7 +60,7 @@ public class Cliente {
                    @NotBlank @NotNull String complemento,
                    @NotBlank @NotNull String cidade,
                    @NotNull Pais pais,
-                   @NotNull Estado estado) {
+                   Estado estado) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;

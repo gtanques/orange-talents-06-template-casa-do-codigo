@@ -1,4 +1,6 @@
-package br.com.casadocodigo.configuracao.validacao.annotation.estado;
+package br.com.casadocodigo.configuracao.validacao.annotation.estado.uniconopais;
+
+import br.com.casadocodigo.configuracao.validacao.annotation.estado.RelacionamentoGenerico;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -7,21 +9,21 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;
 
-public class EstadoValidator implements ConstraintValidator<EstadoValid, EstadoRelacionamento> {
+public class UnicoNoPaisValidator implements ConstraintValidator<UnicoNoPaisValid, RelacionamentoGenerico> {
 
     @PersistenceContext
     private final EntityManager entityManager;
 
-    public EstadoValidator(EntityManager entityManager) {
+    public UnicoNoPaisValidator(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
     @Override
-    public void initialize(EstadoValid valid) {
+    public void initialize(UnicoNoPaisValid valid) {
     }
 
     @Override
-    public boolean isValid(EstadoRelacionamento r, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(RelacionamentoGenerico r, ConstraintValidatorContext constraintValidatorContext) {
 
         Query query = entityManager.createQuery("SELECT 1 FROM Estado e WHERE e.nome =:nome AND e.pais.id=:id");
 

@@ -2,7 +2,9 @@ package br.com.casadocodigo.clientes.dto;
 
 import br.com.casadocodigo.clientes.Cliente;
 import br.com.casadocodigo.configuracao.validacao.annotation.documento.CpfCnpjValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.estado.RelacionamentoGenerico;
 import br.com.casadocodigo.configuracao.validacao.annotation.existe.ExisteValid;
+import br.com.casadocodigo.configuracao.validacao.annotation.estado.existenopais.ExisteNoPaisValid;
 import br.com.casadocodigo.configuracao.validacao.annotation.unico.UnicoValid;
 import br.com.casadocodigo.estados.Estado;
 import br.com.casadocodigo.paises.Pais;
@@ -13,7 +15,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class ClienteRequest {
+
+@ExisteNoPaisValid
+public class ClienteRequest implements RelacionamentoGenerico<Long, Long> {
 
     @NotBlank
     @NotNull
@@ -58,8 +62,6 @@ public class ClienteRequest {
     @ExisteValid(classe = Pais.class, atributo = "id")
     private Long paisId;
 
-    @NotNull
-    @ExisteValid(classe = Estado.class, atributo = "id")
     private Long estadoId;
 
     @Deprecated
@@ -92,8 +94,10 @@ public class ClienteRequest {
     }
 
     public Cliente toModel(EntityManager entityManager){
+
         Pais pais = entityManager.find(Pais.class, this.paisId);
-        Estado estado = entityManager.find(Estado.class, this.estadoId);
+        Estado estado = estadoId != null ? entityManager.find(Estado.class, this.estadoId) : null;
+
         return new Cliente( this.nome,
         this.sobrenome,
         this.email,
@@ -105,6 +109,16 @@ public class ClienteRequest {
         this.cidade,
         pais,
         estado);
+    }
+
+    @Override
+    public Long getCampo() {
+        return estadoId;
+    }
+
+    @Override
+    public Long getRelacionamento() {
+        return paisId;
     }
 
 }

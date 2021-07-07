@@ -1,7 +1,7 @@
 package br.com.casadocodigo.estados.controller;
 
 import br.com.casadocodigo.estados.Estado;
-import br.com.casadocodigo.estados.dto.EstadoRequest;
+import br.com.casadocodigo.estados.dto.RequestGenerico;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class EstadoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> inserir(@Valid @RequestBody EstadoRequest request){
+    public ResponseEntity<?> inserir(@Valid @RequestBody RequestGenerico request){
         Estado estado = request.toModel(entityManager);
         System.out.println(estado.toString());
         entityManager.persist(estado);
