@@ -1,6 +1,7 @@
 package br.com.casadocodigo.configuracao.validacao.controller;
 
 import br.com.casadocodigo.configuracao.validacao.dto.ErroDeFormularioDto;
+import br.com.casadocodigo.configuracao.validacao.dto.ErroGlobalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -23,8 +24,8 @@ public class ErroDeValidacaoHandler {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<ErroDeFormularioDto> handle(MethodArgumentNotValidException exception) {
-        List<ErroDeFormularioDto> dto = new ArrayList<>();
+    public List<?> handle(MethodArgumentNotValidException exception) {
+        List<Object> dto = new ArrayList<>();
 
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
         fieldErrors.forEach(e -> {
@@ -36,7 +37,7 @@ public class ErroDeValidacaoHandler {
         List<ObjectError> errors = exception.getBindingResult().getGlobalErrors();
         errors.forEach(e -> {
             String mensagem = messageSource.getMessage(e, LocaleContextHolder.getLocale());
-            ErroDeFormularioDto error = new ErroDeFormularioDto("nome", mensagem);
+            ErroGlobalDto error = new ErroGlobalDto(mensagem);
             dto.add(error);
         });
 

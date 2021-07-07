@@ -1,6 +1,7 @@
 package br.com.casadocodigo.configuracao.validacao.dto;
 
 public class ErroDeFormularioDto {
+
     private String campo;
     private String erro;
 
@@ -16,4 +17,5 @@ public class ErroDeFormularioDto {
         this.campo = campo;
         this.erro = erro;
     }
+
 }
