@@ -25,7 +25,7 @@ public class LivroController {
     }
 
     @GetMapping
-    public ResponseEntity<?> buscarLivros(@RequestParam(required = false) @PageableDefault(sort = "id") Pageable paginacao) {
+    public ResponseEntity<?> buscarLivros(@PageableDefault(sort = "id") Pageable paginacao) {
         Page<Livro> livros = repository.findAll(paginacao);
         return ResponseEntity.ok().body(ListarLivrosResponse.toDto(livros));
     }
