@@ -13,7 +13,11 @@ public class ExisteValidator implements ConstraintValidator<ExisteValid, Object>
     private Class<?> classe;
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
+
+    public ExisteValidator(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public void initialize(ExisteValid existeValid) {
@@ -23,15 +27,16 @@ public class ExisteValidator implements ConstraintValidator<ExisteValid, Object>
 
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext constraintValidatorContext) {
+
+        if(obj == null){
+            return true;
+        }
+
         Query query = entityManager.createQuery("select 1 from " + classe.getName() + " where " + atributo + "=:value");
         query.setParameter("value", obj);
         List<?> list = query.getResultList();
 
-        if (list.isEmpty()){
-            return false;
-        }
-
-        return true;
+        return !list.isEmpty();
     }
 
 }

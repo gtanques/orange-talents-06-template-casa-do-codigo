@@ -62,6 +62,7 @@ public class ClienteRequest implements RelacionamentoGenerico<Long, Long> {
     @ExisteValid(classe = Pais.class, atributo = "id")
     private Long paisId;
 
+    @ExisteValid(classe = Estado.class, atributo = "id")
     private Long estadoId;
 
     @Deprecated
